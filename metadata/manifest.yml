@@ -1,0 +1,42 @@
+Name: riemann
+
+Cartridge-Short-Name: RIEMANN
+Cartridge-Version: "0.0.1"
+Cartridge-Vendor: strika
+
+Display-Name: Riemann Cartridge
+Description: "Riemann aggregates events from your servers and applications with a powerful stream processing language."
+Version: "0.2.6"
+Website: http://riemann.io
+Source-Url: https://github.com/strika/riemann-cartridge.git
+
+Categories:
+  - web_framework
+  - clojure
+  - riemann
+
+Provides:
+  - riemann-0.2.6
+  - riemann
+
+Scaling:
+  Min: 1
+  Max: 1
+
+Endpoints:
+  - Private-IP-Name:   HOST
+    Private-Port-Name: TCP_PORT
+    Private-Port:      5555
+    Public-Port-Name:  PROXY_TCP_PORT
+    Mappings:
+      - Frontend:      ""
+        Backend:       ""
+        Options:       { websocket: false }
+  - Private-IP-Name:   HOST
+    Private-Port-Name: WS_PORT
+    Private-Port:      5556
+    Public-Port-Name:  PROXY_WS_PORT
+    Mappings:
+      - Frontend:      ""
+        Backend:       ""
+        Options:       { websocket: true }

@@ -1,0 +1,70 @@
+#!/bin/bash
+
+function start() {
+  echo "Starting Riemann"
+  cd ${OPENSHIFT_REPO_DIR}
+  nohup ${OPENSHIFT_RIEMANN_DIR}/bin/riemann riemann.config 2>&1 &
+  echo $! > ${OPENSHIFT_RIEMANN_DIR}/riemann.pid
+  return 0
+}
+
+function stop() {
+  pid=`cat ${OPENSHIFT_RIEMANN_DIR}/riemann.pid`
+  kill -0 $pid && kill -15 $pid
+  return 0
+}
+
+function status(){
+  pid=`cat ${OPENSHIFT_RIEMANN_DIR}/riemann.pid`
+  return `kill -0 $pid`
+}
+
+function restart(){
+  stop
+  start
+  return 0
+}
+
+function update() {
+  return 0
+}
+
+function tidy() {
+  return 0
+}
+
+# Not used
+
+function build() {
+  return 0
+}
+
+function pre-build(){
+  return 0
+}
+
+function post-deploy(){
+  return 0
+}
+
+# Help
+
+if ! [ $# -gt 0 ]; then
+  echo "Usage: $0 [start|restart|graceful|graceful-stop|stop|status|update]"
+  exit 1
+fi
+
+# Logic
+
+case "$1" in
+  start) start ;;
+  restart|graceful) restart ;;
+  graceful-stop|stop) stop ;;
+  status) status ;;
+  build) build ;;
+  pre-build) pre-build ;;
+  post-deploy) post-deploy ;;
+  tidy) tidy ;;
+  update) update ;;
+  *)
+esac

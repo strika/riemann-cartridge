@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wget http://aphyr.com/riemann/riemann-0.2.6.tar.bz2
+tar xvfj riemann-0.2.6.tar.bz2
+mv riemann-0.2.6 riemann
