@@ -3,7 +3,7 @@
 function start() {
   echo "Starting Riemann"
   cd ${OPENSHIFT_REPO_DIR}
-  nohup ${OPENSHIFT_RIEMANN_DIR}/bin/riemann riemann.config 2>&1 &
+  nohup ${OPENSHIFT_RIEMANN_DIR}/riemann/bin/riemann riemann.config 2>&1 &
   echo $! > ${OPENSHIFT_RIEMANN_DIR}/riemann.pid
   return 0
 }
