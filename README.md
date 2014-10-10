@@ -12,5 +12,5 @@ Install the CLI client.
 Execute:
 
 ```bash
-rhc app create riemann http://cartreflect-claytondev.rhcloud.com/github/strika/riemann-cartridge
+rhc app create --scaling riemann http://cartreflect-claytondev.rhcloud.com/github/strika/riemann-cartridge
 ```
