@@ -21,7 +21,7 @@ Provides:
 
 Scaling:
   Min: 1
-  Max: 1
+  Max: -1
 
 Endpoints:
   - Private-IP-Name:   HOST
