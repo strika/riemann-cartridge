@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function start() {
+  source $RBENV_INIT
+
   echo "Starting Riemann"
   cd ${OPENSHIFT_REPO_DIR}
   nohup ${OPENSHIFT_RIEMANN_DIR}/riemann/bin/riemann riemann.config > ${OPENSHIFT_LOG_DIR}/riemann.log 2>&1 &
