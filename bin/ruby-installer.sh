@@ -31,8 +31,7 @@ echo "Done."
 echo "gem: --no-rdoc --no-ri" > ${OPENSHIFT_DATA_DIR}.gemrc
 
 echo '
-if [ -d "${RBENV_ROOT}" ]; then
-  export OPENSHIFT_RIEMANN_PATH_ELEMENT="${OPENSHIFT_RBENV_ROOT}/bin"
+if [ -d "${OPENSHIFT_RBENV_ROOT}" ]; then
   eval "$(rbenv init -)"
 fi
 
