@@ -2,7 +2,7 @@
 
 # Install rbenv:
 echo "Installing rbenv..."
-git clone https://github.com/sstephenson/rbenv.git $OPENSHIFT_RBENV_ROOT
+git clone https://github.com/sstephenson/rbenv.git $RBENV_ROOT
 echo "Done."
 
 # Install plugins:
@@ -16,7 +16,7 @@ for plugin in ${PLUGINS[@]} ; do
   KEY=${plugin%%/*}
   VALUE=${plugin#*/}
 
-  RBENV_PLUGIN_ROOT="${OPENSHIFT_RBENV_ROOT}/plugins/$VALUE"
+  RBENV_PLUGIN_ROOT="${RBENV_ROOT}/plugins/$VALUE"
   if [ ! -d "$RBENV_PLUGIN_ROOT" ] ; then
     git clone https://github.com/$KEY/$VALUE.git $RBENV_PLUGIN_ROOT
   else
@@ -31,14 +31,14 @@ echo "Done."
 echo "gem: --no-rdoc --no-ri" > ${OPENSHIFT_DATA_DIR}.gemrc
 
 echo '
-if [ -d "${OPENSHIFT_RBENV_ROOT}" ]; then
+if [ -d "${RBENV_ROOT}" ]; then
   eval "$(rbenv init -)"
 fi
 
 alias gem="gem --config-file ${OPENSHIFT_DATA_DIR}.gemrc"
-' > $OPENSHIFT_RBENV_INIT
+' > $RBENV_INIT
 
-source $OPENSHIFT_RBENV_INIT
+source $RBENV_INIT
 
 rbenv install $OPENSHIFT_RUBY_VERSION
 rbenv global $OPENSHIFT_RUBY_VERSION
