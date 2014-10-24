@@ -1,13 +1,6 @@
 #!/bin/bash
 
 function start() {
-  source $RBENV_INIT
-
-  rbenv install --skip-existing $OPENSHIFT_RUBY_VERSION
-  rbenv global $OPENSHIFT_RUBY_VERSION
-
-  gem install bundler
-
   echo "Starting Riemann"
   cd ${OPENSHIFT_REPO_DIR}
   nohup ${OPENSHIFT_RIEMANN_DIR}/riemann/bin/riemann riemann.config > ${OPENSHIFT_LOG_DIR}/riemann.log 2>&1 &
@@ -36,6 +29,17 @@ function update() {
   return 0
 }
 
+function dash() {
+  source $RBENV_INIT
+
+  rbenv install --skip-existing $OPENSHIFT_RUBY_VERSION
+  rbenv global $OPENSHIFT_RUBY_VERSION
+
+  gem install bundler
+
+  return 0
+}
+
 function tidy() {
   return 0
 }
@@ -57,7 +61,7 @@ function post-deploy(){
 # Help
 
 if ! [ $# -gt 0 ]; then
-  echo "Usage: $0 [start|restart|graceful|graceful-stop|stop|status|update]"
+  echo "Usage: $0 [start|restart|graceful|graceful-stop|stop|status|update|dash]"
   exit 1
 fi
 
@@ -73,5 +77,6 @@ case "$1" in
   post-deploy) post-deploy ;;
   tidy) tidy ;;
   update) update ;;
+  dash) dash ;;
   *)
 esac
