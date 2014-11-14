@@ -1,7 +1,13 @@
+echo "Installing Ruby..."
+
+curl https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.1.4.tgz -o - | sudo tar xzf - -C /usr/local
+
+echo "Done."
+
 echo "Installing Riemann..."
 
 wget http://aphyr.com/riemann/riemann-0.2.6.tar.bz2
 tar xvfj riemann-0.2.6.tar.bz2
 mv riemann-0.2.6 riemann
 
-echo "Done".
+echo "Done."
