@@ -30,13 +30,6 @@ function update() {
 }
 
 function dash() {
-  source $RBENV_INIT
-
-  rbenv install --skip-existing $OPENSHIFT_RUBY_VERSION
-  rbenv global $OPENSHIFT_RUBY_VERSION
-
-  gem install bundler
-
   return 0
 }
 
