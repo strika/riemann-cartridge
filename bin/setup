@@ -3,7 +3,7 @@ echo "Installing Ruby..."
 wget https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.1.4.tgz
 mkdir ruby-2.1.4
 tar xzf ruby-2.1.4.tgz -C ruby-2.1.4
-sudo cp ruby-2.1.4/* /usr/local
+sudo cp -r ruby-2.1.4/* /usr/local
 
 echo "Done."
 
