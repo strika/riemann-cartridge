@@ -3,6 +3,7 @@ riemann-cartridge
 
 Riemann cartridge for OpenShift.
 
+The cartridge is still under active development and it's not ready for use.
 
 ### Deploy to OpenShift
 
